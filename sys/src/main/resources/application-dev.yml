@@ -1,0 +1,51 @@
+server:
+  port: 8101 ## 端口号
+  
+logging:
+#  file:
+#    name: /Users/yds/eclipse-workspace/logs/sys/log.log ## 日志文件输出
+#    max-size: 200 ##单个日志文件的最大容量（MB）
+#    max-history: 30 ##日志文件的最大保存时间（天）
+#    clean-history-on-start: false ##是否启动时清除保存日志文件,开发环境可以保留该配置
+    ## total-size-cap: ##保存日志文件备份的容量
+  level: 
+    root: warn
+    com.ds.yuan.repository: trace
+  pattern:
+    console: '%p%m%n'
+    
+spring:
+  application:
+    name: sys
+  output:
+    ansi:
+      enabled: ALWAYS ## 控制台色彩输出，开发环境可以保留该配置
+  datasource:
+    url: jdbc:mysql://localhost:3307/yds?useUnicode=true&useSSL=false&characterEncoding=utf8 ## 数据库url
+    username: root
+    password: dadada
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: properties
+
+## mybatis-plus 关闭下划线-驼峰映射
+## 关闭banner
+mybatis-plus:
+  globalConfig:
+    banner: false
+  configuration:
+    map-underscore-to-camel-case: false
+        
+## 正式时，迁入cloud-config
+sysconf:
+  requestprop:
+    enable: false
+    timeOut: 50000
+    tokenHeader: 'EX-Request-t'
+    ageingHeader: 'EX-Request-ageing'
+    whiteList:
+    - '/login'
+    - '/info'
+      

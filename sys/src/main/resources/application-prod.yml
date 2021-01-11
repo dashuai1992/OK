@@ -1,0 +1,17 @@
+server:
+  port: 8100 ##端口号
+  
+logging:
+  file:
+    name: /data/log/system/log.log ##日志文件输出
+    max-size: 100 ##单个日志文件的最大容量
+    max-history: 30 ##日志文件的最大保存时间（天）
+    
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource ## 连接池
+    driver-class-name: com.mysql.cj.jdbc.Driver ## 数据库驱动
+    url: jdbc:mysql://localhost:3306/note?useUnicode=true&useSSL=false&characterEncoding=utf8 ## 数据库url
+    username: root
+    password: dadada
+    

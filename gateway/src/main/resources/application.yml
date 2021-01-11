@@ -1,0 +1,29 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: gateway
+  output:
+    ansi:
+      enabled: ALWAYS ## 控制台色彩输出，开发环境可以保留该配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      globalcors:
+        cors-configurations:
+          '[/**]': 
+            allowedOrigins: '*'
+            allowedMethods:
+            - GET,POST,DELETE,PUT
+#      routes:
+#      - id: sys_route
+#        uri: lb://sys
+#        predicates:
+#        - Path=/sys-server/**
+#        filters:
+#        - StripPrefix=1
